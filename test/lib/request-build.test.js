@@ -38,7 +38,7 @@ describe('request-build', function () {
     })
   })
 
-  it('should request report any errors', function (done) {
+  it('should report any errors', function (done) {
 
     function request(url) {
       url.should.equal('http://url/to/request')
