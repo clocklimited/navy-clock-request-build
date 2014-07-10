@@ -66,4 +66,25 @@ describe('request-build', function () {
     })
   })
 
+  it('should not do anything if captain is master', function (done) {
+
+    var emitSpy = sinon.spy()
+      , request = sinon.spy()
+      , untar = sinon.spy()
+      , context = { emit: emitSpy, isMaster: true }
+      , data =
+        { source: 'http://url/to/request'
+        , destination: '/tmp/navy-rsync-test2'
+        }
+      , requestBuild = createRequestBuild(request, untar)
+
+    requestBuild(context, data, function (error) {
+      should.not.exist(error)
+      request.callCount.should.equal(0, 'request should not be called at all. Called:' + request.callCount)
+      untar.callCount.should.equal(0, 'untar should not be called at all. Called:' + untar.callCount)
+      emitSpy.calledOnce.should.equal(true, 'emit not called once. Called:' + emitSpy.callCount)
+      done()
+    })
+  })
+
 })
