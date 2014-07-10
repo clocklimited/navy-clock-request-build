@@ -4,4 +4,4 @@ This is an Order which is used by [Captains](http://github.com/microadam/navy-ca
 
 It does the following actions:
 
-* request the specified source and untar it to the specified destination
+* request the specified source and untar it to the specified destination. This is not run when executed on the 'master' Captain
