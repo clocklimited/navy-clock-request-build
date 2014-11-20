@@ -13,8 +13,9 @@ describe('request-build', function () {
 
   it('should request source and untar to destination', function (done) {
 
-    function request(url) {
-      url.should.equal('http://url/to/request')
+    function request(opts) {
+      opts.url.should.equal('http://url/to/request')
+      opts.timeout.should.equal(15000)
       var emitter = new Emitter()
       emitter.pipe = function (stream) {
         stream.type.should.equal('gpg.stdin')
