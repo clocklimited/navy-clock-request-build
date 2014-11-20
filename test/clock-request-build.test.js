@@ -20,14 +20,15 @@ describe('clock-request-build', function () {
   it('should run the init function', function (done) {
     var steps = clockRequestBuild.getSteps()
       , context =
-        { orderArgs: [ 'source', 'destination' ]
+        { orderArgs: [ 'source', 'destination', 'passphrase' ]
         }
 
     steps.init(context, function (error, data) {
       should.not.exist(error)
-      Object.keys(data).length.should.equal(2)
+      Object.keys(data).length.should.equal(3)
       data.source.should.equal(context.orderArgs[0])
       data.destination.should.equal(context.orderArgs[1])
+      data.passphrase.should.equal(context.orderArgs[2])
       done()
     })
   })

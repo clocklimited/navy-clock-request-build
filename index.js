@@ -21,6 +21,7 @@ module.exports = function rsync() {
     var data =
       { source: context.orderArgs[0]
       , destination: context.orderArgs[1]
+      , passphrase: context.orderArgs[2]
       }
 
     callback(null, data)
