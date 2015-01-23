@@ -1,6 +1,4 @@
-var request = require('request')
-  , tar = require('tar')
-  , requestBuild = require('./lib/request-build')(request, tar)
+var requestBuild = require('./lib/request-build')()
 
 module.exports = function rsync() {
 
