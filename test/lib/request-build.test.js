@@ -28,8 +28,8 @@ describe('request-build', function () {
     function mockExec(cmd, callback) {
       mockExecCalled = true
       var expectedCmd = 'curl http://url/to/request |'
-        + ' gpg --passphrase abc123 |'
-        + ' tar -C /tmp/navy-request-build-test2 -xz'
+        + ' gpg --decrypt --passphrase abc123 |'
+        + ' tar xI unzstd -C /tmp/navy-request-build-test2'
       cmd.should.equal(expectedCmd)
       if (options.execError) {
         return callback(new Error())
